@@ -1,84 +1,51 @@
-// DECLARE VARIABLES
-// Declare letters, starting Wins, Losses and Guesses left.
+// The specific letters that the user typed.
+var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
-var winsDisplay = 0; 
-var lossesDisplay = 0; 
-var guessDisplay = 10; 
-var userGuessDisplay = []; 
-
-// Declare letters user has clicked and the letter computer has chosen
-var computerGuess = letters[Math.floor(Math.random() * letters.length)];
-console.log(computerGuess)
+// Setting for zero
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var letterUser = [];
+var eachofLetters = null;
 
 
-// FUNCTIONS
-function reset(){
-    winsDisplay = 0;
-    lossesDisplay = 0;
-    guessDisplay = 0;
-    userGuessDisplay = [];
-}
-function updateScore(chicken) {
-    if (chicken === computerGuess) {
-        winsDisplay++;
-        document.getElementById("wins").innerHTML = winsDisplay;
+// Sets the computerGuess variable equal to a random choice from the computerChoice array.
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-        console.log("Correct!")
-    }
-    else {
-        console.log("ug", chicken)
-        console.log("cg", computerGuess)
-        lossesDisplay++;
-        document.getElementById("losses").innerHTML = lossesDisplay;
-        console.log("Wrong!")
-    }
-
+function countGuessesLeft() {
+	document.querySelector("#guessesLeft").innerHTML = "Guesses Left: " + guessesLeft;
 }
 
+function farUserGuesses() {
+	document.querySelector("#letter").innerHTML = "Your Guesses so far: " + letterUser.join(' ');
+}
 
-//================================================================
+countGuessesLeft();
 
-// MAIN PROCESS
+var restart = function() {
+	guessesLeft = 9;
+	letterUser = [];
+	var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+}
 
-// When user presses a key, go through this process
-document.onkeyup = function (event) {
+// When the user presses a key, it will run the following function..
+document.onkeyup = function(event) {
+	guessesLeft--;
 
-   
-    // Determine which key was pressed, make it lowercase and set it to userGuessDisplay
-    var userGuess = event.key.toLowerCase();
-    // check if value is in arrary
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-    for (var i = 0; i < userGuessDisplay.length; i++) {
-        console.log("hellur")
-        if (userGuess === userGuessDisplay[i]) {
-            alert("You already guessed that letter.")
-            return;
-        }
-        
-    }
+	letterUser.push(userGuess);
+	countGuessesLeft();
+	farUserGuesses();
 
-        userGuessDisplay.push(userGuess)
-        console.log(userGuessDisplay)
-        // Only run if computerGuess equals userGuess
-        if (userGuess === computerGuess) {
-            updateScore(userGuess);
-
-            // updateGuessDisplay();
-        }
-        else {
-            //updateUserGuessDisplay();
-            updateScore(userGuess);
-            guessDisplay--;
-            document.getElementById("userGuess").innerHTML = userGuessDisplay;
-
-        }
-       
-    }
-
-
-
-
-
-
-
+	if (userGuess === computerGuess){
+		wins++;
+		document.querySelector("#wins").innerHTML = "Wins: " + wins;
+		restart();
+	} 
+	else if (guessesLeft === 0) {
+		losses++;
+		document.querySelector("#lose").innerHTML = "Loses: " + losses;
+		restart();
+	}
+  };

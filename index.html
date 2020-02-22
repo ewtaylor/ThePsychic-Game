@@ -1,80 +1,49 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <html lang="en-us">
+	<meta charset="utf-8">
+	<title>Psychic Game(Basic)</title>
+	
+	<!-- Bootstrap Core CSS -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <head>
-    
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylsheet" type="text/css" href="assets/css/reset.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-            crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    
-        <script type="text/javascript" src="assets/javascript/game.js"></script>
-        <title>Psychic Game</title>
-    </head>
-    
-    <body>
-    
-        <div class="container">
-    
-            <h1> The Psychic Game</h1>
-            <hr>
-            <h2>Instructions</h2>
-            <br>
-            <h5>Are you Psychic? Press a button from a-z to guess what letter the computer is thinking of</h5>
-    
-            <br>
-            <div class="col-md-2">
-                <img id="pyschic" src="https://ww2.kqed.org/pop/wp-content/uploads/sites/12/2016/01/psychic.jpg">
-            </div>
-    
-            <div class="col-md-8">
-                <table class="table">
-                    <thead>
-                        <th id="score-board" colspan="2">Score Board</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Wins</th>
-                            <td>
-                                <span id="wins">0</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Losses</th>
-                            <td>
-                                <span id="losses">0</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Guesses Left</th>
-                            <td>
-                                <span id="guessLeft">10</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">User's Guesses</th>
-                            <td>
-                                <span id="userGuess"></span>
-                            </td>
-                        </tr>
-    
-                    </tbody>
-                </table>
-    
-            </div>
-    
-            <div class="col-md-2">
-                
-            </div>
-    
-        </div>
-    
-    </body>
-    
-    </html>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+<header>
+	<div class="page-header">
+	  <h1>The Psychic Game </h1>
+	</div>
+</header>
+<div class="container">
+	<h2>Guess what letter I'm thinking of</h2>
+	<div class="row">
+		<div class="col-md-4">
+			<img src="assets/images/th.jpg" class="thumbnail" alt="...">
+		</div>
+		<div class="col-md-4">
+			<ul id="space" class="list-group">
+				<li class="list-group-item" id="wins">Wins:</li>
+				<li class="list-group-item" id="lose">Losses:</li>
+				<li class="list-group-item" id="guessesLeft">Guesses Left:</li>
+				<li class="list-group-item" id="letter">Your Guesses so far:</li>
+			</ul>
+		</div>
+		<div class="col-md-2">
+			<img src="assets/images/th.jpg" class="thumbnail" alt="...">
+		</div>
+	</div>
+</div>
+<div class="footer">
+	&copy;Copyright 2019 Erin Taylor
+</div>
+<!-- Javascript game.js -->
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
